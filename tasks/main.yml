@@ -1,0 +1,18 @@
+---
+# tasks file for httpd
+ - name: install httpd server
+   ansible.builtin.yum:
+        name: httpd
+        state: present
+ - name: start httpd server
+   ansible.builtin.service:
+        name: httpd
+        state: started
+ - name: Copy file to httpd default path                                  
+   ansible.builtin.copy:
+           src: files/index.html
+           dest: /var/www/html/
+           owner: root
+           group: root
+           mode: '0644'
+
